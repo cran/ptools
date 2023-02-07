@@ -10,7 +10,6 @@ knitr::opts_chunk$set(
 ## -----------------------------------------------------------------------------
 library(ptools)
 library(sp)     #for plotting functions
-library(raster) #for buffer later on
 
 # Plot shootings in NYC
 plot(nyc_bor)
@@ -60,7 +59,7 @@ plot(nyc_bor,lwd=2,add=TRUE)
 # Make a smaller sample of the liquor stores in NYC
 liq_samp <- nyc_liq[sample(rownames(nyc_liq@data),20),]
 # Buffer, it is hard to view all the little islands
-nyc_buff <- buffer(nyc_bor,5000)
+nyc_buff <- buff_sp(nyc_bor,5000)
 # Now create Voronoi/Thiessen areas
 liq_vor <- vor_sp(nyc_buff,liq_samp)
 
